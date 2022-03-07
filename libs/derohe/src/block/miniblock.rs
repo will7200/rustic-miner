@@ -1,0 +1,1 @@
+pub const MINIBLOCK_SIZE: usize = 48;

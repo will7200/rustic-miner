@@ -1,0 +1,27 @@
+[package]
+name = "derohe-bn"
+version = "0.4.5"
+authors = ["Sean Bowe <ewillbefull@gmail.com>", "William Flores <will7207@gmail.com>"]
+description = "Pairing cryptography with the Barreto-Naehrig curve"
+keywords = ["pairing","crypto","cryptography"]
+readme = "README.md"
+homepage = "https://github.com/zcash/bn"
+repository = "https://github.com/witnet/bn"
+license = "MIT OR Apache-2.0"
+
+[[bench]]
+name = "api"
+
+[dependencies]
+rand = { version = "0.8.5" }
+byteorder = "1.4.3"
+crunchy = "0.2.2"
+lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
+rustc-hex = { version = "2", default-features = false }
+serde = "1.0.136"
+serde_derive = "1.0.136"
+
+
+[dev-dependencies.bincode]
+version = "1.0.0"
+default-features = false

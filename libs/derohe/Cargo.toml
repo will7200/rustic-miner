@@ -1,0 +1,19 @@
+[package]
+name = "derohe"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bech32 = "0.8.1"
+bn = { package = "derohe-bn", path = '../bn', version = "0.4.5" }
+num-bigint = "0.4.3"
+base16 = "0.2.1"
+serde = "1.0.136"
+serde_derive = "1.0.136"
+sha3 = "0.9.1"
+divsufsort = "1.0.2"
+
+[dev-dependencies]
+rstest = "0.12.0"
