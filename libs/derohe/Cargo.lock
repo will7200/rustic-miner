@@ -43,6 +43,22 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "14c189c53d098945499cdfa7ecc63567cf3886b3332b312a5b4585d8d3a6a610"
 
 [[package]]
+name = "cc"
+version = "1.0.73"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2fff2a6927b3bb87f9595d67196a70493f627687a71d87a0d692242c33f58c11"
+
+[[package]]
+name = "cdivsufsort"
+version = "2.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "edefce019197609da416762da75bb000bbd2224b2d89a7e722c2296cbff79b8c"
+dependencies = [
+ "cc",
+ "sacabase 2.0.0",
+]
+
+[[package]]
 name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -60,6 +76,7 @@ version = "0.1.0"
 dependencies = [
  "base16",
  "bech32",
+ "cdivsufsort",
  "derohe-bn",
  "divsufsort",
  "num-bigint",
@@ -97,7 +114,7 @@ version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "976624e893bd88c9c2a938933154432755d263ac164ce0d1bca4162f7a966581"
 dependencies = [
- "sacabase",
+ "sacabase 1.0.0",
 ]
 
 [[package]]
@@ -265,6 +282,15 @@ name = "sacabase"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a5f856a5e32d0e42b10e218a1fc1257defed0bf08b8bdba14e0b80a45ff8c48d"
+dependencies = [
+ "num-traits",
+]
+
+[[package]]
+name = "sacabase"
+version = "2.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9883fc3d6ce3d78bb54d908602f8bc1f7b5f983afe601dabe083009d86267a84"
 dependencies = [
  "num-traits",
 ]

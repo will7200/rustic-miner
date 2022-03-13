@@ -16,7 +16,8 @@ pub fn pow16(input: &[u8]) -> [u8; 32] {
         &key,
     );
     let mut sa = vec![0; stage1_result.len()];
-    divsufsort::sort_in_place(&stage1_result, &mut sa);
+    // divsufsort::sort_in_place(&stage1_result, &mut sa);
+    cdivsufsort::sort_in_place(&stage1_result, &mut sa);
     let val: Vec<u16> = sa.iter().map(|&val| val as u16).collect();
     let bb = unsafe { val.align_to::<u8>().1 };
     let key = sha3(bb);
