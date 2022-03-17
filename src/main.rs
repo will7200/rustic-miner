@@ -14,6 +14,7 @@ use std::cmp::min;
 use std::error::Error;
 use std::sync::{Arc, RwLock};
 use std::time::{Duration, SystemTime};
+use affinity::{get_core_num, set_thread_affinity};
 
 use ctrlc;
 use clap::{ErrorKind, Parser, Subcommand, CommandFactory, FromArgMatches, Error as ClapError, Command};
@@ -131,10 +132,14 @@ fn start_miner(cli: Cli) -> Result<(), Box<dyn Error>> {
     let wg = WorkGatherer::new(wallet_address, cli.daemon_rpc_address, job.clone());
     let wg_receiver = wg.receiver();
     let jh = thread::spawn(move || wg.get_work());
+    let cores: Vec<usize> = (0..get_core_num()).collect();
     for i in 1..=cli.mining_threads.into() {
         let miner = Miner::new(i, job.clone(), counter.clone());
+        let item = i % cores.len();
+        let bind_to = cores[item];
         debug!("Starting miner {}", i);
-        thread::spawn(|| {
+        thread::spawn(move || {
+            // set_thread_affinity(vec![bind_to]).unwrap();
             miner.start()
         });
     }
